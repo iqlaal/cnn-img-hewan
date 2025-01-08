@@ -10,7 +10,7 @@ import time
 import streamlit_lottie as st_lottie
 
 # Streamlit page configuration
-st.set_page_config(page_title="Animals Image Classification Kelompok 3", page_icon="🖼️", layout="wide")
+st.set_page_config(page_title="Animals Image Classification Kelompok 3", page_icon="ðŸ–¼ï¸", layout="wide")
 
 # Load Lottie animation
 def load_lottie_url(url: str):
@@ -105,7 +105,7 @@ model = load_my_model()
 # Main title with cool text effect
 st.markdown(""" 
     <h1 style="text-align:center; color: #007bff; font-family: 'Courier New', Courier, monospace; animation: glow 2s ease-in-out infinite alternate;">
-    🖼️  Animals Image Classification Kelompok 3
+    ðŸ–¼ï¸  Animals Image Classification Kelompok 3
     </h1>
     <style>
     @keyframes glow {
@@ -135,10 +135,10 @@ if not os.path.exists('./images'):
     os.makedirs('./images')
 
 # Upload image section with fancy file uploader
-image_file = st.file_uploader("🌄 Upload an image", type=["jpg", "png"], key="file_uploader")
+image_file = st.file_uploader("ðŸŒ„ Upload an image", type=["jpg", "png"], key="file_uploader")
 
 if image_file is not None:
-    if st.button("Classify Image 🧠", key="classify_button"):
+    if st.button("Classify Image ðŸ§ ", key="classify_button"):
         img_path = f"./images/{image_file.name}"
         with open(img_path, "wb") as f:
             f.write(image_file.getbuffer())
@@ -149,14 +149,14 @@ if image_file is not None:
         img_to_predict = load_image(img_path)
 
         # Progress spinner
-        with st.spinner('🔍 Classifying image...'):
+        with st.spinner('ðŸ” Classifying image...'):
             time.sleep(2)
             predictions = model.predict(img_to_predict)
             predicted_class = np.argmax(predictions, axis=-1)
             confidence = np.max(predictions)
 
         # Threshold and result display
-        confidence_threshold = 0.60  
+        confidence_threshold = 0.60  # Increased confidence threshold to 60%
 
         if confidence < confidence_threshold:
             result = f"Prediction: Not an Animal class (Confidence: {confidence*100:.2f}%)"
@@ -174,60 +174,56 @@ if st.button("Reload App"):
 # Additional Animals Information
 st.markdown(""" 
 ### **Kelas Animals**:
-# Additional Animals Information
-st.markdown(""" 
-### **Kelas Animals**:
-- <span title="🦏 Large herbivores with thick skin and horns.">**rhinoceros**</span>
-- <span title="🦁 Apex predators of the feline family.">**lion**</span>
-- <span title="🐙 Marine animals with tentacles.">**octopus**</span>
-- <span title="🦪 Shellfish often found in oceans.">**oyster**</span>
-- <span title="🐦 Creatures from the bird species.">**pigeon**</span>
-- <span title="🐍 Reptiles with elongated bodies.">**snake**</span>
-- <span title="🐅 Majestic big cats known for their stripes.">**tiger**</span>
-- <span title="🐦 Birds known for drilling holes in trees.">**woodpecker**</span>
-- <span title="🪼 Marine creatures with gelatinous bodies.">**jellyfish**</span>
-- <span title="🦎 Reptiles with scaly skin.">**lizard**</span>
-- <span title="🦒 Rare mammals with long necks and striped legs.">**okapi**</span>
-- <span title="🐼 Bamboo-eating mammals with black and white fur.">**panda**</span>
-- <span title="🦔 Spiny mammals known for their quills.">**porcupine**</span>
-- <span title="🐦 Shorebirds often found near water.">**sandpiper**</span>
-- <span title="🐦 Small birds commonly found in urban areas.">**sparrow**</span>
-- <span title="🦃 Birds commonly associated with Thanksgiving.">**turkey**</span>
-- <span title="🦓 Striped herbivores of the savanna.">**zebra**</span>
-- <span title="🦘 Marsupials known for their powerful legs.">**kangaroo**</span>
-- <span title="🦞 Crustaceans with pincers.">**lobster**</span>
-- <span title="🦧 Intelligent great apes.">**orangutan**</span>
-- <span title="🦜 Colorful birds known for mimicking sounds.">**parrot**</span>
-- <span title="🦔 Nocturnal marsupials with prehensile tails.">**possum**</span>
-- <span title="🐴 Small marine fish with horse-like heads.">**seahorse**</span>
-- <span title="🦑 Cephalopods with long arms.">**squid**</span>
-- <span title="🐢 Reptiles with hard shells.">**turtle**</span>
-- <span title="🐨 Herbivorous marsupials native to Australia.">**koala**</span>
-- <span title="🦟 Insects known for their itchy bites.">**mosquito**</span>
-- <span title="🦦 Aquatic mammals known for their playful nature.">**otter**</span>
-- <span title="🐦 Water birds with large throat pouches.">**pelecaniformes**</span>
-- <span title="🦝 Nocturnal mammals with ringed tails.">**raccoon**</span>
-- <span title="🐡 Aquatic mammals that bark.">**seal**</span>
-- <span title="🐿️ Small rodents with bushy tails.">**squirrel**</span>
-- <span title="🐋 The largest mammals of the ocean.">**whale**</span>
-- <span title="🐞 Insects with hard, spotted shells.">**ladybugs**</span>
-- <span title="🦋 Insects known for their scaly wings.">**moth**</span>
-- <span title="🦉 Birds of prey known for their silent flight.">**owl**</span>
-- <span title="🐧 Flightless birds living in cold regions.">**penguin**</span>
-- <span title="🐭 Small rodents commonly kept as pets.">**rat**</span>
-- <span title="🦈 Large aquatic predators with sharp teeth.">**shark**</span>
-- <span title="🌟 Star-shaped marine animals."> **starfish ** </ span >
-- <span title =" 🐺 Carnivorous mammals with thick fur . "> ** wolf ** </ span >
-- <span title =" 🧴 Big cats known for their unique spots . "> ** leopard ** </ span >
-- <span title =" 🐁 Small rodents similar to rats . "> ** mouse ** </ span >
-- <span title =" 🦬 Large domesticated animals used for plowing . "> ** ox ** </ span >
-- <span title =" 🐖 Domesticated farm animals often used for meat . "> ** pig ** </ span >
-- <span title =" 🦌 Hoofed mammals with antlers . "> ** reindeer ** </ span >
-- <span title =" 🐑 Domesticated animals often kept for wool . "> ** sheep ** </ span >
-- <span title =" 🦢 Birds with long necks . "> ** swan ** </ span >
-- <span title =" 🦘 Marsupials native to Australia . "> ** wombat ** </ span >
-
-""",unsafe_allow_html=True)
+- <span title="ðŸ¦ Large herbivores with thick skin and horns.">**rhinoceros**</span>
+- <span title="ðŸ¦ Apex predators of the feline family.">**lion**</span>
+- <span title="ðŸ™ Marine animals with tentacles.">**octopus**</span>
+- <span title="ðŸ¦ª Shellfish often found in oceans.">**oyster**</span>
+- <span title="ðŸ¦ Creatures from the bird species.">**pigeon**</span>
+- <span title="ðŸ Reptiles with elongated bodies.">**snake**</span>
+- <span title="ðŸ… Majestic big cats known for their stripes.">**tiger**</span>
+- <span title="ðŸ¦ Birds known for drilling holes in trees.">**woodpecker**</span>
+- <span title="ðŸª¼ Marine creatures with gelatinous bodies.">**jellyfish**</span>
+- <span title="ðŸ¦Ž Reptiles with scaly skin.">**lizard**</span>
+- <span title="ðŸ¦’ Rare mammals with long necks and striped legs.">**okapi**</span>
+- <span title="ðŸ¼ Bamboo-eating mammals with black and white fur.">**panda**</span>
+- <span title="ðŸ¦” Spiny mammals known for their quills.">**porcupine**</span>
+- <span title="ðŸ¦ Shorebirds often found near water.">**sandpiper**</span>
+- <span title="ðŸ¦ Small birds commonly found in urban areas.">**sparrow**</span>
+- <span title="ðŸ¦ƒ Birds commonly associated with Thanksgiving.">**turkey**</span>
+- <span title="ðŸ¦“ Striped herbivores of the savanna.">**zebra**</span>
+- <span title="ðŸ¦˜ Marsupials known for their powerful legs.">**kangaroo**</span>
+- <span title="ðŸ¦ž Crustaceans with pincers.">**lobster**</span>
+- <span title="ðŸ¦§ Intelligent great apes.">**orangutan**</span>
+- <span title="ðŸ¦œ Colorful birds known for mimicking sounds.">**parrot**</span>
+- <span title="ðŸ¦” Nocturnal marsupials with prehensile tails.">**possum**</span>
+- <span title="ðŸ´ Small marine fish with horse-like heads.">**seahorse**</span>
+- <span title="ðŸ¦‘ Cephalopods with long arms.">**squid**</span>
+- <span title="ðŸ¢ Reptiles with hard shells.">**turtle**</span>
+- <span title="ðŸ¨ Herbivorous marsupials native to Australia.">**koala**</span>
+- <span title="ðŸ¦Ÿ Insects known for their itchy bites.">**mosquito**</span>
+- <span title="ðŸ¦¦ Aquatic mammals known for their playful nature.">**otter**</span>
+- <span title="ðŸ¦ Water birds with large throat pouches.">**pelecaniformes**</span>
+- <span title="ðŸ¦ Nocturnal mammals with ringed tails.">**raccoon**</span>
+- <span title="ðŸ¡ Aquatic mammals that bark.">**seal**</span>
+- <span title="ðŸ¿ï¸ Small rodents with bushy tails.">**squirrel**</span>
+- <span title="ðŸ‹ The largest mammals of the ocean.">**whale**</span>
+- <span title="ðŸž Insects with hard, spotted shells.">**ladybugs**</span>
+- <span title="ðŸ¦‹ Insects known for their scaly wings.">**moth**</span>
+- <span title="ðŸ¦‰ Birds of prey known for their silent flight.">**owl**</span>
+- <span title="ðŸ§ Flightless birds living in cold regions.">**penguin**</span>
+- <span title="ðŸ­ Small rodents commonly kept as pets.">**rat**</span>
+- <span title="ðŸ¦ˆ Large aquatic predators with sharp teeth.">**shark**</span>
+- <span title="ðŸŒŸ Star-shaped marine animals.">**starfish**</span>
+- <span title="ðŸº Carnivorous mammals with thick fur.">**wolf**</span>
+- <span title="ðŸ§´ Big cats known for their unique spots.">**leopard**</span>
+- <span title="ðŸ Small rodents similar to rats.">**mouse**</span>
+- <span title="ðŸ¦¬ Large domesticated animals used for plowing.">**ox**</span>
+- <span title="ðŸ– Domesticated farm animals often used for meat.">**pig**</span>
+- <span title="ðŸ¦Œ Hoofed mammals with antlers.">**reindeer**</span>
+- <span title="ðŸ‘ Domesticated animals often kept for wool.">**sheep**</span>
+- <span title="ðŸ¦¢ Birds with long necks.">**swan**</span>
+- <span title="ðŸ¦˜ Marsupials native to Australia.">**wombat**</span>
+""", unsafe_allow_html=True)
 
 # Data untuk Akurasi dan Presisi
 data = {
@@ -244,28 +240,18 @@ data = {
         "pig", "reindeer", "sheep", "swan", "wombat"
     ],
     "Accuracy": [
-        0.91, 0.88, 0.85, 0.78, 0.83, 
-        0.79, 0.87, 0.82, 0.86, 0.81,
-        0.90, 0.84, 0.87, 0.80, 0.79,
-        0.85, 0.83, 0.81, 0.88, 0.86,
-        0.84, 0.85, 0.89, 0.86, 0.82,
-        0.84, 0.83, 0.85, 0.78, 0.81,
-        0.77, 0.80, 0.83, 0.79, 0.78,
-        0.81, 0.82, 0.79, 0.76, 0.83,
-        0.87, 0.85, 0.88, 0.86, 0.80,
-        0.88, 0.85, 0.82, 0.88, 0.85
+        0.91, 0.88, 0.85, 0.78, 0.83, 0.79, 0.87, 0.82, 0.86, 0.81,
+        0.90, 0.84, 0.87, 0.80, 0.79, 0.85, 0.83, 0.81, 0.88, 0.86,
+        0.84, 0.85, 0.89, 0.86, 0.82, 0.84, 0.83, 0.85, 0.78, 0.81,
+        0.77, 0.80, 0.83, 0.79, 0.78, 0.81, 0.82, 0.79, 0.76, 0.83,
+        0.87, 0.85, 0.88, 0.86, 0.80, 0.88, 0.85, 0.82, 0.88, 0.85
     ],
     "Precision": [
-        0.89, 0.85, 0.84, 0.76, 0.80,
-        0.77, 0.86, 0.79, 0.83, 0.78,
-        0.88, 0.82, 0.85, 0.77, 0.76,
-        0.82, 0.80, 0.78, 0.84, 0.82,
-        0.81, 0.80, 0.85, 0.82, 0.79,
-        0.81, 0.80, 0.82, 0.75, 0.79,
-        0.75, 0.78, 0.81, 0.76, 0.76,
-        0.79, 0.80, 0.77, 0.73, 0.81,
-        0.85, 0.82, 0.88, 0.86, 0.78,
-        ...
+        0.89, 0.85, 0.84, 0.76, 0.80, 0.77, 0.86, 0.79, 0.83, 0.78,
+        0.88, 0.82, 0.85, 0.77, 0.76, 0.82, 0.80, 0.78, 0.84, 0.82,
+        0.81, 0.80, 0.85, 0.82, 0.79, 0.81, 0.80, 0.82, 0.75, 0.79,
+        0.75, 0.78, 0.81, 0.76, 0.76, 0.79, 0.80, 0.77, 0.73, 0.81,
+        0.85, 0.82, 0.88, 0.86, 0.78, 0.88, 0.82, 0.85, 0.88, 0.82
     ]
 }
 
