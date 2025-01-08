@@ -123,9 +123,9 @@ st.header("Upload Gambar Disini dan Dapatkan Prediksinya!")
 
 # Image loading function
 def load_image(filename):
-    img = load_img(filename, target_size=(32, 32))
+    img = load_img(filename, target_size=(128, 128))  # Sesuaikan ukuran sesuai dengan model
     img = img_to_array(img)
-    img = img.reshape(1, 32, 32, 3)
+    img = img.reshape(1, 128, 128, 3)  # Ubah sesuai dengan ukuran model
     img = img.astype('float32')
     img = img / 255.0
     return img
