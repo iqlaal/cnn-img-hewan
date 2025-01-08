@@ -27,7 +27,7 @@ lottie_animation = load_lottie_url(lottie_url)
 with st.sidebar:
     st_lottie.st_lottie(lottie_animation, height=200, width=200, key="lottie_animation")
     st.markdown("<h2 style='color: #007bff;'>Explore the App!</h2>", unsafe_allow_html=True)
-    st.markdown("**About the Model:** This CIFAR-10 classifier uses a convolutional neural network trained on thousands of images.")
+    st.markdown("**About the Model:** This Animals classifier uses a convolutional neural network trained on five thousands of images.")
     
     # Features section with hover effect
     st.markdown(""" 
@@ -171,7 +171,7 @@ if image_file is not None:
 if st.button("Reload App"):
     st.progress(100)
 
-# Additional CIFAR-10 Information
+# Additional Animals Information
 st.markdown(""" 
 ### **Kelas Animals**:
 - <span title="🦏 Large herbivores with thick skin and horns.">**rhinoceros**</span>
