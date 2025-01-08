@@ -272,5 +272,5 @@ df = pd.DataFrame(data)
 
 # Stylish DataFrame
 st.markdown("### Animals Akurasi dan Presisi")
-styled_table = df.style.background_gradient(cmap="coolwarm")
-st.dataframe(styled_table)
+styled_table = df.style.background_gradient(cmap="coolwarm", subset=['Accuracy', 'Precision'])
+st.dataframe(styled_table, height=400)
