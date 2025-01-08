@@ -213,20 +213,22 @@ st.markdown("""
 - <span title="🐞 Insects with hard, spotted shells.">**ladybugs**</span>
 - <span title="🦋 Insects known for their scaly wings.">**moth**</span>
 - <span title="🦉 Birds of prey known for their silent flight.">**owl**</span>
-- <span title="🐧 Flightless birds found in cold regions.">**penguin**</span>
-- <span title="🐀 Small rodents with long tails.">**rat**</span>
-- <span title="🦈 Predatory fish with sharp teeth.">**shark**</span>
-- <span title="⭐ Marine animals with radial symmetry.">**starfish**</span>
-- <span title="🐺 Social canines known for their howls.">**wolf**</span>
-- <span title="🐆 Big cats known for their speed and agility.">**leopard**</span>
-- <span title="🐭 Small rodents with whiskers.">**mouse**</span>
-- <span title="🐂 Large domesticated bovines.">**ox**</span>
-- <span title="🐖 Domesticated pigs often used in farming.">**pig**</span>
-- <span title="🦌 Animals that belong to the deer family.">**reindeer**</span>
-- <span title="🐑 Woolly herbivores often used in agriculture.">**sheep**</span>
-- <span title="🦢 Graceful waterfowl known for their beauty.">**swan**</span>
-- <span title="🐻‍❄️ Burrowing marsupials with strong claws.">**wombat**</span>
-""", unsafe_allow_html=True)
+- <span title="🐧 Flightless birds living in cold regions.">**penguin**</span>
+- <span title="🐭 Small rodents commonly kept as pets.">**rat**</span>
+- <span title="🦈 Large aquatic predators with sharp teeth.">**shark**</span>
+- <span title="🌟 Star-shaped marine animals."> **starfish ** </ span >
+- <span title =" 🐺 Carnivorous mammals with thick fur . "> ** wolf ** </ span >
+- <span title =" 🧴 Big cats known for their unique spots . "> ** leopard ** </ span >
+- <span title =" 🐁 Small rodents similar to rats . "> ** mouse ** </ span >
+- <span title =" 🦬 Large domesticated animals used for plowing . "> ** ox ** </ span >
+- <span title =" 🐖 Domesticated farm animals often used for meat . "> ** pig ** </ span >
+- <span title =" 🦌 Hoofed mammals with antlers . "> ** reindeer ** </ span >
+- <span title =" 🐑 Domesticated animals often kept for wool . "> ** sheep ** </ span >
+- <span title =" 🦢 Birds with long necks . "> ** swan ** </ span >
+- <span title =" 🦘 Marsupials native to Australia . "> ** wombat ** </ span >
+
+""",
+unsafe_allow_html=True)
 
 # Data untuk Akurasi dan Presisi
 data = {
