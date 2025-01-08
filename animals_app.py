@@ -138,7 +138,7 @@ if not os.path.exists('./images'):
 image_file = st.file_uploader("ðŸŒ„ Upload an image", type=["jpg", "png"], key="file_uploader")
 
 if image_file is not None:
-    if st.button("Classify Image ðŸ§ ", key="classify_button"):
+    if st.button("Classify Image 🧠", key="classify_button"):
         img_path = f"./images/{image_file.name}"
         with open(img_path, "wb") as f:
             f.write(image_file.getbuffer())
