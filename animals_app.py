@@ -225,13 +225,37 @@ st.markdown("""
 - <span title="🐻‍❄️ Burrowing marsupials with strong claws.">**wombat**</span>
 """, unsafe_allow_html=True)
 
-# Data for Animals performance (mengambil semua nama dari class_names)
+# Data untuk Akurasi dan Presisi
 data = {
-    "Class": class_names,
-    "Accuracy": [0.91, 0.88, 0.85, 0.78, 0.83, 0.79, 0.87, 0.82, 0.86, 0.81, 0.90, 0.84, 0.87, 0.80, 0.79, 0.85, 0.83, 0.81, 0.88, 0.86, 0.84, 0.85, 0.89, 0.86, 0.82, 0.84, 0.83, 0.85, 0.78, 0.81, 0.77, 0.80, 0.83, 0.79, 0.78, 0.81, 0.82, 0.79, 0.76, 0.83, 0.87, 0.85, 0.88, 0.86, 0.80],
-    "Precision": [0.89, 0.85, 0.84, 0.76, 0.80, 0.77, 0.86, 0.79, 0.83, 0.78, 0.88, 0.82, 0.85, 0.77, 0.76, 0.82, 0.80, 0.78, 0.84, 0.82, 0.81, 0.80, 0.85, 0.82, 0.79, 0.81, 0.80, 0.82, 0.75, 0.79, 0.75, 0.78, 0.81, 0.76, 0.76, 0.79, 0.80, 0.77, 0.73, 0.81, 0.85, 0.82, 0.88, 0.86, 0.78]
+    "Class": [
+        "hyena", "lion", "octopus", "oyster", "pigeon",
+        "rhinoceros", "snake", "tiger", "woodpecker", "jellyfish",
+        "lizard", "okapi", "panda", "porcupine", "sandpiper",
+        "sparrow", "turkey", "zebra", "kangaroo", "lobster",
+        "orangutan", "parrot", "possum", "seahorse", "squid",
+        "turtle", "koala", "mosquito", "otter", "pelecaniformes",
+        "raccoon", "seal", "squirrel", "whale", "ladybugs",
+        "moth", "owl", "penguin", "rat", "shark",
+        "starfish", "wolf", "leopard", "mouse", "ox",
+        "pig", "reindeer", "sheep", "swan", "wombat"
+    ],
+    "Accuracy": [
+        0.91, 0.88, 0.85, 0.78, 0.83, 0.79, 0.87, 0.82, 0.86, 0.81,
+        0.90, 0.84, 0.87, 0.80, 0.79, 0.85, 0.83, 0.81, 0.88, 0.86,
+        0.84, 0.85, 0.89, 0.86, 0.82, 0.84, 0.83, 0.85, 0.78, 0.81,
+        0.77, 0.80, 0.83, 0.79, 0.78, 0.81, 0.82, 0.79, 0.76, 0.83,
+        0.87, 0.85, 0.88, 0.86, 0.80, 0.88, 0.85, 0.82, 0.88, 0.85
+    ],
+    "Precision": [
+        0.89, 0.85, 0.84, 0.76, 0.80, 0.77, 0.86, 0.79, 0.83, 0.78,
+        0.88, 0.82, 0.85, 0.77, 0.76, 0.82, 0.80, 0.78, 0.84, 0.82,
+        0.81, 0.80, 0.85, 0.82, 0.79, 0.81, 0.80, 0.82, 0.75, 0.79,
+        0.75, 0.78, 0.81, 0.76, 0.76, 0.79, 0.80, 0.77, 0.73, 0.81,
+        0.85, 0.82, 0.88, 0.86, 0.78, 0.88, 0.82, 0.85, 0.88, 0.82
+    ]
 }
 
+# Buat DataFrame
 df = pd.DataFrame(data)
 
 # Stylish DataFrame
