@@ -227,8 +227,7 @@ st.markdown("""
 - <span title =" 🦢 Birds with long necks . "> ** swan ** </ span >
 - <span title =" 🦘 Marsupials native to Australia . "> ** wombat ** </ span >
 
-""",
-unsafe_allow_html=True)
+""",unsafe_allow_html=True)
 
 # Data untuk Akurasi dan Presisi
 data = {
