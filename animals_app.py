@@ -135,7 +135,7 @@ if not os.path.exists('./images'):
     os.makedirs('./images')
 
 # Upload image section with fancy file uploader
-image_file = st.file_uploader("ðŸŒ„ Upload an image", type=["jpg", "png"], key="file_uploader")
+image_file = st.file_uploader("🌄 Upload an image", type=["jpg", "png"], key="file_uploader")
 
 if image_file is not None:
     if st.button("Classify Image 🧠", key="classify_button"):
