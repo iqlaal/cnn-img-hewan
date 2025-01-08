@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from PIL import Image
 import streamlit as st
-from tensorflow.keras.utils import img_to_array, load_img
+from tensorflow.keras.preprocessing.image import img_to_array, load_img
 import tensorflow as tf
 import requests
 import time
