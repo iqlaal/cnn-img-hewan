@@ -105,7 +105,7 @@ model = load_my_model()
 # Main title with cool text effect
 st.markdown(""" 
     <h1 style="text-align:center; color: #007bff; font-family: 'Courier New', Courier, monospace; animation: glow 2s ease-in-out infinite alternate;">
-    ðŸ–¼ï¸  Animals Image Classification Kelompok 3
+     🖼️ Animals Image Classification Kelompok 3
     </h1>
     <style>
     @keyframes glow {
