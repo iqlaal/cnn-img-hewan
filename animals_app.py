@@ -156,7 +156,7 @@ if image_file is not None:
             confidence = np.max(predictions)
 
         # Threshold and result display
-        confidence_threshold = 0.60  # Increased confidence threshold to 60%
+        confidence_threshold = 0.60  
 
         if confidence < confidence_threshold:
             result = f"Prediction: Not an Animal class (Confidence: {confidence*100:.2f}%)"
@@ -213,17 +213,19 @@ st.markdown("""
 - <span title="🐧 Flightless birds living in cold regions.">**penguin**</span>
 - <span title="🐭 Small rodents commonly kept as pets.">**rat**</span>
 - <span title="🦈 Large aquatic predators with sharp teeth.">**shark**</span>
-- <span title="🌟 Star-shaped marine animals.">**starfish**</span>
-- <span title="🐺 Carnivorous mammals with thick fur.">**wolf**</span>
-- <span title="🧴 Big cats known for their unique spots.">**leopard**</span>
-- <span title="🐁 Small rodents similar to rats.">**mouse**</span>
-- <span title="🦬 Large domesticated animals used for plowing.">**ox**</span>
-- <span title="🐖 Domesticated farm animals often used for meat.">**pig**</span>
-- <span title="🦌 Hoofed mammals with antlers.">**reindeer**</span>
-- <span title="🐑 Domesticated animals often kept for wool.">**sheep**</span>
-- <span title="🦢 Birds with long necks.">**swan**</span>
-- <span title="🦘 Marsupials native to Australia.">**wombat**</span>
-""", unsafe_allow_html=True)
+- <span title="🌟 Star-shaped marine animals."> **starfish ** </ span >
+ -< span title =" 🐺 Carnivorous mammals with thick fur . "> ** wolf ** </ span >
+ -< span title =" 🧴 Big cats known for their unique spots . "> ** leopard ** </ span >
+ -< span title =" 🐁 Small rodents similar to rats . "> ** mouse ** </ span >
+ -< span title =" 🦬 Large domesticated animals used for plowing . "> ** ox ** </ span >
+ -< span title =" 🐖 Domesticated farm animals often used for meat . "> ** pig ** </ span >
+ -< span title =" 🦌 Hoofed mammals with antlers . "> ** reindeer ** </ span >
+ -< span title =" 🐑 Domesticated animals often kept for wool . "> ** sheep ** </ span >
+ -< span title =" 🦢 Birds with long necks . "> ** swan ** </ span >
+ -< span title =" 🦘 Marsupials native to Australia . "> ** wombat ** </ span >
+
+""",
+unsafe_allow_html=True)
 
 # Data untuk Akurasi dan Presisi
 data = {
@@ -240,18 +242,28 @@ data = {
         "pig", "reindeer", "sheep", "swan", "wombat"
     ],
     "Accuracy": [
-        0.91, 0.88, 0.85, 0.78, 0.83, 0.79, 0.87, 0.82, 0.86, 0.81,
-        0.90, 0.84, 0.87, 0.80, 0.79, 0.85, 0.83, 0.81, 0.88, 0.86,
-        0.84, 0.85, 0.89, 0.86, 0.82, 0.84, 0.83, 0.85, 0.78, 0.81,
-        0.77, 0.80, 0.83, 0.79, 0.78, 0.81, 0.82, 0.79, 0.76, 0.83,
-        0.87, 0.85, 0.88, 0.86, 0.80, 0.88, 0.85, 0.82, 0.88, 0.85
+        0.91, 0.88, 0.85, 0.78, 0.83, 
+        0.79, 0.87, 0.82, 0.86, 0.81,
+        0.90, 0.84, 0.87, 0.80, 0.79,
+        0.85, 0.83, 0.81, 0.88, 0.86,
+        0.84, 0.85, 0.89, 0.86, 0.82,
+        0.84, 0.83, 0.85, 0.78, 0.81,
+        0.77, 0.80, 0.83, 0.79, 0.78,
+        0.81, 0.82, 0.79, 0.76, 0.83,
+        0.87, 0.85, 0.88, 0.86, 0.80,
+        0.88, 0.85, 0.82, 0.88, 0.85
     ],
     "Precision": [
-        0.89, 0.85, 0.84, 0.76, 0.80, 0.77, 0.86, 0.79, 0.83, 0.78,
-        0.88, 0.82, 0.85, 0.77, 0.76, 0.82, 0.80, 0.78, 0.84, 0.82,
-        0.81, 0.80, 0.85, 0.82, 0.79, 0.81, 0.80, 0.82, 0.75, 0.79,
-        0.75, 0.78, 0.81, 0.76, 0.76, 0.79, 0.80, 0.77, 0.73, 0.81,
-        0.85, 0.82, 0.88, 0.86, 0.78, 0.88, 0.82, 0.85, 0.88, 0.82
+        0.89, 0.85, 0.84, 0.76, 0.80,
+        0.77, 0.86, 0.79, 0.83, 0.78,
+        0.88, 0.82, 0.85, 0.77, 0.76,
+        0.82, 0.80, 0.78, 0.84, 0.82,
+        0.81, 0.80, 0.85, 0.82, 0.79,
+        0.81, 0.80, 0.82, 0.75, 0.79,
+        0.75, 0.78, 0.81, 0.76, 0.76,
+        0.79, 0.80, 0.77, 0.73, 0.81,
+        0.85, 0.82, 0.88, 0.86, 0.78,
+        ...
     ]
 }
 
@@ -260,5 +272,5 @@ df = pd.DataFrame(data)
 
 # Stylish DataFrame
 st.markdown("### Animals Akurasi dan Presisi")
-styled_table = df.style.background_gradient(cmap="coolwarm", subset=['Accuracy', 'Precision'])
-st.dataframe(styled_table, height=400)
+styled_table = df.style.background_gradient(cmap="coolwarm")
+st.dataframe(styled_table)
