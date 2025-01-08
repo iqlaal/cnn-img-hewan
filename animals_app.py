@@ -149,7 +149,7 @@ if image_file is not None:
         img_to_predict = load_image(img_path)
 
         # Progress spinner
-        with st.spinner('ðŸ” Classifying image...'):
+        with st.spinner(' 🖼️ Classifying image...'):
             time.sleep(2)
             predictions = model.predict(img_to_predict)
             predicted_class = np.argmax(predictions, axis=-1)
