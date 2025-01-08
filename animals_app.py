@@ -212,16 +212,16 @@ st.markdown("""
 - <span title="🐧 Flightless birds living in cold regions.">**penguin**</span>
 - <span title="🐭 Small rodents commonly kept as pets.">**rat**</span>
 - <span title="🦈 Large aquatic predators with sharp teeth.">**shark**</span>
-- <span title="🌟 Star-shaped marine animals.">**starfish**</span >
-- <span title="🐺 Carnivorous mammals with thick fur.">**wolf**</span >
-- <span title="🧴  Big cats known for their unique spots.">**leopard**</span >
-- <span title="🐁 Small rodents similar to rats. ">** mouse**</span >
-- <span title="🐂 Large domesticated animals used for plowing.">**ox**</ span >
-- <span title="🐖 Domesticated farm animals often used for meat.">**pig**</ span >
-- <span title="🦌 Hoofed mammals with antlers. ">**reindeer**</ span >
-- <span title="🐑 Domesticated animals often kept for wool.">**sheep**</ span >
-- <span title="🦢 Birds with long necks. ">**swan**</ span >
-- <span title="🦘 Marsupials native to Australia.">**wombat**</ span >
+- <span title="🌟 Star-shaped marine animals.">**starfish**</span>
+- <span title="🐺 Carnivorous mammals with thick fur.">**wolf**</span>
+- <span title="🧴  Big cats known for their unique spots.">**leopard**</span>
+- <span title="🐁 Small rodents similar to rats.">**mouse**</span>
+- <span title="🐂 Large domesticated animals used for plowing.">**ox**</span>
+- <span title="🐖 Domesticated farm animals often used for meat.">**pig**</span>
+- <span title="🦌 Hoofed mammals with antlers. ">**reindeer**</span>
+- <span title="🐑 Domesticated animals often kept for wool.">**sheep**</span>
+- <span title="🦢 Birds with long necks. ">**swan**</span>
+- <span title="🦘 Marsupials native to Australia.">**wombat**</span>
 """, unsafe_allow_html=True)
 
 # Data untuk Akurasi dan Presisi
