@@ -9,8 +9,14 @@ import requests
 import time
 import streamlit_lottie as st_lottie
 
+# Set seed for reproducibility
+seed_value = 0
+os.environ['PYTHONHASHSEED'] = str(seed_value)
+np.random.seed(seed_value)
+tf.random.set_seed(seed_value)
+
 # Streamlit page configuration
-st.set_page_config(page_title="Image Classification CIFAR-10", page_icon="🖼️", layout="wide")
+st.set_page_config(page_title="Image Classification", page_icon="🖼️", layout="wide")
 
 # Load Lottie animation
 def load_lottie_url(url: str):
@@ -27,69 +33,22 @@ lottie_animation = load_lottie_url(lottie_url)
 with st.sidebar:
     st_lottie.st_lottie(lottie_animation, height=200, width=200, key="lottie_animation")
     st.markdown("<h2 style='color: #007bff;'>Explore the App!</h2>", unsafe_allow_html=True)
-    st.markdown("**About the Model:** This CIFAR-10 classifier uses a convolutional neural network trained on thousands of images.")
-    
-    # Features section with hover effect
-    st.markdown(""" 
-        <style>
-            .feature-hover {
-                position: relative;
-                display: inline-block;
-                color: #007bff;
-                cursor: pointer;
-            }
+    st.markdown("**About the Model:** This image classifier uses a convolutional neural network trained on thousands of images.")
 
-            .feature-hover .tooltip-text {
-                visibility: hidden;
-                width: 200px;
-                background-color: #333;
-                color: #fff;
-                text-align: center;
-                border-radius: 6px;
-                padding: 5px;
-                position: absolute;
-                z-index: 1;
-                bottom: 100%;
-                left: 50%;
-                margin-left: -100px;
-                opacity: 0;
-                transition: opacity 0.3s;
-            }
-
-            .feature-hover:hover .tooltip-text {
-                visibility: visible;
-                opacity: 1;
-            }
-        </style>
-
-        <ul>
-            <li>
-                <div class="feature-hover">Fast Classification(Cool)
-                    <span class="tooltip-text">Get predictions in seconds.Enjoy a sleek and modern design.</span>
-                </div>
-            </li>
-            <li>
-                <div class="feature-hover">Highly Accurate
-                    <span class="tooltip-text">Model accuracy is up to 92%.</span>
-                </div>
-            </li>
-        </ul>
-    """, unsafe_allow_html=True)
-
-    # Contact information
-    st.markdown("<hr>", unsafe_allow_html=True)
-    st.markdown('Contact us at: [**Hunterdii**](https://www.linkedin.com/in/het-patel-8b110525a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)')
-
-# CIFAR-10 class names
+# Updated class names
 class_names = [
-    "airplane", "automobile", "bird", "cat", "deer",
-    "dog", "frog", "horse", "ship", "truck"
+    'hyena', 'lizard', 'leopard', 'jellyfish', 'koala', 'lion', 'ladybugs', 'kangaroo', 'lobster',
+    'mosquito', 'moth', 'mouse', 'octopus', 'oyster', 'okapi', 'owl', 'ox', 'orangutan', 'otter',
+    'panda', 'parrot', 'pelecaniformes', 'pig', 'penguin', 'reindeer', 'sandpiper', 'rat', 'porcupine',
+    'rhinoceros', 'pigeon', 'possum', 'raccoon', 'seal', 'seahorse', 'squid', 'sparrow', 'squirrel',
+    'shark', 'swan', 'sheep', 'snake', 'starfish', 'turkey', 'tiger', 'wombat', 'whale', 'zebra',
+    'wolf', 'woodpecker', 'turtle'
 ]
 
 # Load model
 @st.cache_resource
 def load_my_model():
-    model = tf.keras.models.load_model("Cifar_10-Object-Recognition/final_model1.h5")
+    model = tf.keras.models.load_model("MobileNet_animals_model.h5")
     return model
 
 model = load_my_model()
@@ -97,7 +56,7 @@ model = load_my_model()
 # Main title with cool text effect
 st.markdown("""
     <h1 style="text-align:center; color: #007bff; font-family: 'Courier New', Courier, monospace; animation: glow 2s ease-in-out infinite alternate;">
-    🖼️ CIFAR-10 Image Classification Kelompok 3
+    🖼️ Image Classification with New Classes
     </h1>
     <style>
     @keyframes glow {
@@ -111,7 +70,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.header("Upload Gambar Disini dan Dapatkan Prediksinya!")
+st.header("Upload an Image and Get Predictions!")
 
 # Image loading function
 def load_image(filename):
@@ -151,7 +110,7 @@ if image_file is not None:
         confidence_threshold = 0.60  # Increased confidence threshold to 60%
 
         if confidence < confidence_threshold:
-            result = f"Prediction: Not a CIFAR-10 class (Confidence: {confidence*100:.2f}%)"
+            result = f"Prediction: Not a valid class (Confidence: {confidence*100:.2f}%)"
         else:
             result = f"Prediction: {class_names[predicted_class[0]]} with {confidence*100:.2f}% confidence"
 
@@ -159,34 +118,6 @@ if image_file is not None:
 
         os.remove(img_path)
 
-# Add unique progress bar for better interactivity
-if st.button("Reload App"):
-    st.progress(100)
-
-# Additional CIFAR-10 Information
-st.markdown(""" 
-### **Kelas CIFAR-10**:
-- <span title="✈️ Aircraft used in transportation and travel.">**airplane**</span>
-- <span title="🚗 Motor vehicles designed for roads.">**automobile**</span>
-- <span title="🐦 Creatures from the bird species.">**bird**</span>
-- <span title="🐱 Domesticated feline pets.">**cat**</span>
-- <span title="🦌 Animals that belong to the deer family.">**deer**</span>
-- <span title="🐶 Domesticated dogs.">**dog**</span>
-- <span title="🐸 Amphibians with moist skin.">**frog**</span>
-- <span title="🐴 Domesticated or wild horses.">**horse**</span>
-- <span title="🚢 Sea-going vessels used for transport.">**ship**</span>
-- <span title="🚚 Large vehicles used for goods transport.">**truck**</span>
-""", unsafe_allow_html=True)
-
-# Data for CIFAR-10 performance
-data = {
-    "Class": class_names,
-    "Accuracy": [0.89, 0.85, 0.78, 0.92, 0.80, 0.76, 0.83, 0.88, 0.90, 0.81],
-    "Precision": [0.87, 0.82, 0.77, 0.91, 0.79, 0.75, 0.81, 0.86, 0.89, 0.80]
-}
-df = pd.DataFrame(data)
-
-# Stylish DataFrame
-st.markdown("### CIFAR-10 Akurasi dan Presisi")
-styled_table = df.style.background_gradient(cmap="coolwarm", subset=['Accuracy', 'Precision'])
-st.dataframe(styled_table, height=400)
+# Add additional class information if needed
+st.markdown("### New Class Information:")
+st.write(", ".join(class_names))
