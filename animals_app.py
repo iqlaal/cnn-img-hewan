@@ -84,7 +84,7 @@ with st.sidebar:
     st.markdown("<hr>", unsafe_allow_html=True)
     st.markdown('Contact us at: [**Hunterdii**](https://www.linkedin.com/in/het-patel-8b110525a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)')
 
-# CIFAR-10 class names
+# Animals class names
 class_names = [
     "hyena", "jellyfish", "kangaroo", "koala", "ladybugs",
     "leopard", "lion", "lizard", "lobster", "mosquito",
