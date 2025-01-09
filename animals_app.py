@@ -148,7 +148,7 @@ if image_file is not None:
             f.write(image_file.getbuffer())
         
         image = Image.open(img_path)
-        st.image(image, caption='Uploaded Image', use_column_width=True)
+        st.image(image, caption='Uploaded Image', use_container_width=True)
 
         img_to_predict = load_image(img_path)
 
