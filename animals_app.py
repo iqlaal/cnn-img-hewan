@@ -97,7 +97,7 @@ class_names = [
 # Load model
 @st.cache_resource
 def load_my_model():
-    model = tf.keras.models.load_model("MobileNet_animals_model.h5")
+    model = tf.keras.models.load_model("final_model1.h5")
     return model
 
 model = load_my_model()
