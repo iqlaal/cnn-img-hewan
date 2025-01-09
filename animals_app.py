@@ -123,11 +123,10 @@ st.header("Upload Gambar Disini dan Dapatkan Prediksinya!")
 
 # Image loading function
 def load_image(filename):
-    img = load_img(filename, target_size=(128, 128))  # Mengubah ukuran menjadi 128x128
+    img = load_img(filename, target_size=(128, 128))  # Pastikan ukuran sama seperti saat training
     img = img_to_array(img)
-    img = img.reshape(1, 128, 128, 3)  # Sesuaikan ukuran sesuai model
-    img = img.astype('float32')
-    img = img / 255.0
+    img = np.expand_dims(img, axis=0)  # Tambahkan batch dimension
+    img = img.astype('float32') / 255.0  # Normalisasi nilai piksel
     return img
 
 # Create folder for images if not exist
@@ -153,16 +152,19 @@ if image_file is not None:
             time.sleep(2)
             predictions = model.predict(img_to_predict)
             predicted_class = np.argmax(predictions, axis=-1)
-            confidence = np.max(predictions)
+            confidence = predictions[0][predicted_class[0]]  # Ambil confidence dari prediksi
+
+        # Debug: Tampilkan probabilitas semua kelas
+        for i, prob in enumerate(predictions[0]):
+            st.write(f"{class_names[i]}: {prob * 100:.2f}%")
 
         # Threshold and result display
-        confidence_threshold = 0.60  # Increased confidence threshold to 60%
-
+        confidence_threshold = 0.40  # Threshold confidence 40%
         if confidence < confidence_threshold:
             result = f"Prediction: Not an Animal class (Confidence: {confidence*100:.2f}%)"
         else:
             result = f"Prediction: {class_names[predicted_class[0]]} with {confidence*100:.2f}% confidence"
-
+            
         st.success(result)
 
         os.remove(img_path)
