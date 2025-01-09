@@ -175,7 +175,6 @@ if image_file is not None:
         top_results = [f"{class_names[i]}: {predictions[0][i]*100:.2f}%" for i in top_predictions]
         st.markdown("### Top Predictions:")
         st.write("\n".join(top_results))
-                st.success(result)
 
         # Show confidence meter with cool design
         # st.markdown(f"""
