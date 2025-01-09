@@ -82,16 +82,16 @@ with st.sidebar:
 
 # Animals class names
 class_names = [
-    "hyena", "lion", "octopus", "oyster", "pigeon",
-    "rhinoceros", "snake", "tiger", "woodpecker", "jellyfish",
-    "lizard", "okapi", "panda", "porcupine", "sandpiper",
-    "sparrow", "turkey", "zebra", "kangaroo", "lobster",
-    "orangutan", "parrot", "possum", "seahorse", "squid",
-    "turtle", "koala", "mosquito", "otter", "pelecaniformes",
-    "raccoon", "seal", "squirrel", "whale", "ladybugs",
-    "moth", "owl", "penguin", "rat", "shark",
-    "starfish", "wolf", "leopard", "mouse", "ox",
-    "pig", "reindeer", "sheep", "swan", "wombat"
+    "hyena", "jellyfish", "kangaroo", "koala", "ladybugs",
+    "leopard", "lion", "lizard", "lobster", "mosquito",
+    "moth", "mouse", "octopus", "okapi", "orangutan",
+    "otter", "owl", "ox", "oyster", "panda",
+    "parrot", "pelecaniformes", "penguin", "pig", "pigeon",
+    "porcupine", "possum", "raccoon", "rat", "reindeer",
+    "rhinoceros", "sandpiper", "seahorese", "seal", "shark",
+    "sheep", "snake", "sparrow", "squid", "squirrel",
+    "starfish", "swan", "tiger", "turkey", "turtle",
+    "whaler", "wolf", "wombat", "woodpecker", "zebra"
 ]
 
 # Load model
@@ -155,7 +155,7 @@ if image_file is not None:
             confidence = predictions[0][predicted_class[0]]  # Ambil confidence dari prediksi
 
         # Threshold and result display
-        confidence_threshold = 0.40  # Threshold confidence 40%
+        confidence_threshold = 0.60  # Threshold confidence 40%
         if confidence < confidence_threshold:
             result = f"Prediction: Not an Animal class (Confidence: {confidence*100:.2f}%)"
         else:
@@ -225,16 +225,16 @@ st.markdown("""
 # Data untuk Akurasi dan Presisi
 data = {
     "Class": [
-        "hyena", "lion", "octopus", "oyster", "pigeon",
-        "rhinoceros", "snake", "tiger", "woodpecker", "jellyfish",
-        "lizard", "okapi", "panda", "porcupine", "sandpiper",
-        "sparrow", "turkey", "zebra", "kangaroo", "lobster",
-        "orangutan", "parrot", "possum", "seahorse", "squid",
-        "turtle", "koala", "mosquito", "otter", "pelecaniformes",
-        "raccoon", "seal", "squirrel", "whale", "ladybugs",
-        "moth", "owl", "penguin", "rat", "shark",
-        "starfish", "wolf", "leopard", "mouse", "ox",
-        "pig", "reindeer", "sheep", "swan", "wombat"
+        "hyena", "jellyfish", "kangaroo", "koala", "ladybugs",
+        "leopard", "lion", "lizard", "lobster", "mosquito",
+        "moth", "mouse", "octopus", "okapi", "orangutan",
+        "otter", "owl", "ox", "oyster", "panda",
+        "parrot", "pelecaniformes", "penguin", "pig", "pigeon",
+        "porcupine", "possum", "raccoon", "rat", "reindeer",
+        "rhinoceros", "sandpiper", "seahorese", "seal", "shark",
+        "sheep", "snake", "sparrow", "squid", "squirrel",
+        "starfish", "swan", "tiger", "turkey", "turtle",
+        "whaler", "wolf", "wombat", "woodpecker", "zebra"
     ],
     "Accuracy": [
         0.91, 0.88, 0.85, 0.78, 0.83, 0.79, 0.87, 0.82, 0.86, 0.81,
