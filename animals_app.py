@@ -159,15 +159,16 @@ if image_file is not None:
             predicted_class = np.argmax(predictions, axis=-1)
             confidence = np.max(predictions)
 
-        # Threshold and result display
-        confidence_threshold = 0.60  # Increased confidence threshold to 60%
+        thresholds = [0.5, 0.6, 0.7, 0.8]
 
-        if confidence < confidence_threshold:
-            result = f"Prediction: Not a Animals class (Confidence: {confidence*100:.2f}%)"
+        for threshold in thresholds:
+        if confidence < threshold:
+            result = f"Threshold: {threshold} - Prediction: Not a Animals class (Confidence: {confidence*100:.2f}%)"
         else:
-            result = f"Prediction: {class_names[predicted_class[0]]} with {confidence*100:.2f}% confidence"
+            result = f"Threshold: {threshold} - Prediction: {class_names[predicted_class[0]]} with {confidence*100:.2f}% confidence"
+        
+        print(result)
 
-        st.success(result)
        
         # Show confidence meter with cool design
         # st.markdown(f"""
