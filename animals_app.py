@@ -155,7 +155,7 @@ if image_file is not None:
             confidence = predictions[0][predicted_class[0]]  # Ambil confidence dari prediksi
 
         # Threshold and result display
-        confidence_threshold = 0.60  # Threshold confidence 40%
+        confidence_threshold = 0.40  # Threshold confidence 40%
         if confidence < confidence_threshold:
             result = f"Prediction: Not an Animal class (Confidence: {confidence*100:.2f}%)"
         else:
