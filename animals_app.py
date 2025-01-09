@@ -21,6 +21,10 @@ def load_lottie_url(url: str):
 
 # Lottie Animation
 lottie_url = "https://lottie.host/de06d967-8825-499e-aa8c-a88dd15e1a08/dH2OtlPb3c.json"
+# lottie_url = "https://lottie.host/cb54b283-5df4-4a94-b096-f20609d6cedd/OieGG3bmfC.json"  # Replace with your Lottie URL
+# lottie_url = "https://lottie.host/93d88d16-07db-49ec-88dd-6d9d61060502/w2kjPNdxKk.json"  # Replace with your Lottie URL
+# lottie_url = "https://lottie.host/02b428b5-0ba4-4059-bc6f-acea19d2d1d7/4QgxxvnOEh.json"  # Replace with your Lottie URL
+# lottie_url = "https://lottie.host/a8aaf165-c79f-4286-be91-c340a8c81074/re1wEpOwh4.json"  # Replace with your Lottie URL
 lottie_animation = load_lottie_url(lottie_url)
 
 # Sidebar with unique elements
@@ -64,8 +68,8 @@ with st.sidebar:
 
         <ul>
             <li>
-                <div class="feature-hover">Fast Classification (Cool)
-                    <span class="tooltip-text">Get predictions in seconds. Enjoy a sleek and modern design.</span>
+                <div class="feature-hover">Fast Classification(Cool)
+                    <span class="tooltip-text">Get predictions in seconds.Enjoy a sleek and modern design.</span>
                 </div>
             </li>
             <li>
@@ -80,7 +84,7 @@ with st.sidebar:
     st.markdown("<hr>", unsafe_allow_html=True)
     st.markdown('Contact us at: [**Hunterdii**](https://www.linkedin.com/in/het-patel-8b110525a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)')
 
-# Animals class names
+# CIFAR-10 class names
 class_names = [
     "hyena", "jellyfish", "kangaroo", "koala", "ladybugs",
     "leopard", "lion", "lizard", "lobster", "mosquito",
@@ -103,9 +107,9 @@ def load_my_model():
 model = load_my_model()
 
 # Main title with cool text effect
-st.markdown(""" 
+st.markdown("""
     <h1 style="text-align:center; color: #007bff; font-family: 'Courier New', Courier, monospace; animation: glow 2s ease-in-out infinite alternate;">
-     🖼️ Animals Image Classification Kelompok 3
+    🖼️ Animals Image Classification Kelompok 3
     </h1>
     <style>
     @keyframes glow {
@@ -119,14 +123,15 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.header("Upload Gambar Disini dan Dapatkan Prediksinya!")
+st.header("Upload an image and get predictions!")
 
 # Image loading function
 def load_image(filename):
-    img = load_img(filename, target_size=(128, 128))  # Pastikan ukuran sama seperti saat training
+    img = load_img(filename, target_size=(128, 128))
     img = img_to_array(img)
-    img = np.expand_dims(img, axis=0)  # Tambahkan batch dimension
-    img = img.astype('float32') / 255.0  # Normalisasi nilai piksel
+    img = img.reshape(1, 32, 32, 3)
+    img = img.astype('float32')
+    img = img / 255.0
     return img
 
 # Create folder for images if not exist
@@ -143,25 +148,35 @@ if image_file is not None:
             f.write(image_file.getbuffer())
         
         image = Image.open(img_path)
-        st.image(image, caption='Uploaded Image', use_container_width=True)
+        st.image(image, caption='Uploaded Image', use_column_width=True)
 
         img_to_predict = load_image(img_path)
 
         # Progress spinner
-        with st.spinner(' 🖼️ Classifying image...'):
+        with st.spinner('🔍 Classifying image...'):
             time.sleep(2)
             predictions = model.predict(img_to_predict)
             predicted_class = np.argmax(predictions, axis=-1)
-            confidence = predictions[0][predicted_class[0]]  # Ambil confidence dari prediksi
+            confidence = np.max(predictions)
 
         # Threshold and result display
-        confidence_threshold = 0.40  # Threshold confidence 40%
+        confidence_threshold = 0.60  # Increased confidence threshold to 60%
+
         if confidence < confidence_threshold:
-            result = f"Prediction: Not an Animal class (Confidence: {confidence*100:.2f}%)"
+            result = f"Prediction: Not a Animals class (Confidence: {confidence*100:.2f}%)"
         else:
             result = f"Prediction: {class_names[predicted_class[0]]} with {confidence*100:.2f}% confidence"
-            
+
         st.success(result)
+
+        # Show confidence meter with cool design
+        # st.markdown(f"""
+        # <div class="confidence-bar">
+        #     <div class="confidence-fill" style="width:{confidence*100}%; background-color: {'#4caf50' if confidence >= confidence_threshold else '#ff5722'}">
+        #         {confidence*100:.2f}% confident
+        #     </div>
+        # </div>
+        # """, unsafe_allow_html=True)
 
         os.remove(img_path)
 
@@ -169,9 +184,9 @@ if image_file is not None:
 if st.button("Reload App"):
     st.progress(100)
 
-# Additional Animals Information
+# Additional CIFAR-10 Information
 st.markdown(""" 
-### **Kelas Animals**:
+### **Animals Classes**:
 - <span title="🦁 Apex predators of the feline family.">**lion**</span>
 - <span title="🐙 Marine animals with tentacles.">**octopus**</span>
 - <span title="🦪 Shellfish often found in oceans.">**oyster**</span>
@@ -222,28 +237,19 @@ st.markdown("""
 - <span title="🦘 Marsupials native to Australia.">**wombat**</span>
 """, unsafe_allow_html=True)
 
-# Data untuk Akurasi dan Presisi
+# Data for Animals performance
 data = {
-    "Class": [
-        "hyena", "jellyfish", "kangaroo", "koala", "ladybugs",
-        "leopard", "lion", "lizard", "lobster", "mosquito",
-        "moth", "mouse", "octopus", "okapi", "orangutan",
-        "otter", "owl", "ox", "oyster", "panda",
-        "parrot", "pelecaniformes", "penguin", "pig", "pigeon",
-        "porcupine", "possum", "raccoon", "rat", "reindeer",
-        "rhinoceros", "sandpiper", "seahorese", "seal", "shark",
-        "sheep", "snake", "sparrow", "squid", "squirrel",
-        "starfish", "swan", "tiger", "turkey", "turtle",
-        "whaler", "wolf", "wombat", "woodpecker", "zebra"
-    ],
-    "Accuracy": [
+    "Class": class_names,
+    "Accuracy": 
+    [  
         0.91, 0.88, 0.85, 0.78, 0.83, 0.79, 0.87, 0.82, 0.86, 0.81,
         0.90, 0.84, 0.87, 0.80, 0.79, 0.85, 0.83, 0.81, 0.88, 0.86,
         0.84, 0.85, 0.89, 0.86, 0.82, 0.84, 0.83, 0.85, 0.78, 0.81,
         0.77, 0.80, 0.83, 0.79, 0.78, 0.81, 0.82, 0.79, 0.76, 0.83,
         0.87, 0.85, 0.88, 0.86, 0.80, 0.88, 0.85, 0.82, 0.88, 0.85
     ],
-    "Precision": [
+    "Precision": 
+    [
         0.89, 0.85, 0.84, 0.76, 0.80, 0.77, 0.86, 0.79, 0.83, 0.78,
         0.88, 0.82, 0.85, 0.77, 0.76, 0.82, 0.80, 0.78, 0.84, 0.82,
         0.81, 0.80, 0.85, 0.82, 0.79, 0.81, 0.80, 0.82, 0.75, 0.79,
@@ -251,11 +257,9 @@ data = {
         0.85, 0.82, 0.88, 0.86, 0.78, 0.88, 0.82, 0.85, 0.88, 0.82
     ]
 }
-
-# Buat DataFrame
 df = pd.DataFrame(data)
 
 # Stylish DataFrame
-st.markdown("### Animals Akurasi dan Presisi")
+st.markdown("### Animals Class Performance")
 styled_table = df.style.background_gradient(cmap="coolwarm", subset=['Accuracy', 'Precision'])
 st.dataframe(styled_table, height=400)
