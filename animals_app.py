@@ -127,9 +127,9 @@ st.header("Upload an image and get predictions!")
 
 # Image loading function
 def load_image(filename):
-    img = load_img(filename, target_size=(32, 32))
+    img = load_img(filename, target_size=(128, 128))
     img = img_to_array(img)
-    img = img.reshape(1, 32, 32, 3)
+    img = img.reshape(6000, 128, 128, 3)
     img = img.astype('float32')
     img = img / 255.0
     return img
