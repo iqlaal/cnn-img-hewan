@@ -154,10 +154,6 @@ if image_file is not None:
             predicted_class = np.argmax(predictions, axis=-1)
             confidence = predictions[0][predicted_class[0]]  # Ambil confidence dari prediksi
 
-        # Debug: Tampilkan probabilitas semua kelas
-        for i, prob in enumerate(predictions[0]):
-            st.write(f"{class_names[i]}: {prob * 100:.2f}%")
-
         # Threshold and result display
         confidence_threshold = 0.40  # Threshold confidence 40%
         if confidence < confidence_threshold:
