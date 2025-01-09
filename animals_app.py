@@ -82,7 +82,7 @@ with st.sidebar:
 
 # Animals class names
 class_names = [
-    "hyena", "koala", "kangaroo", "koala", "ladybugs",
+    "hyena", "jellyfish", "kangaroo", "koala", "ladybugs",
     "leopard", "lion", "lizard", "lobster", "mosquito",
     "moth", "mouse", "octopus", "okapi", "orangutan",
     "otter", "owl", "ox", "oyster", "panda",
