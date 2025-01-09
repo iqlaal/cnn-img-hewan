@@ -82,7 +82,7 @@ with st.sidebar:
 
     # Contact information
     st.markdown("<hr>", unsafe_allow_html=True)
-    st.markdown('Contact us at: [**Hunterdii**](https://www.linkedin.com/in/het-patel-8b110525a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)')
+    st.markdown('Contact us at: [**Kelompok 3**](https://www.linkedin.com/in/het-patel-8b110525a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)')
 
 # Animals class names
 class_names = [
