@@ -88,10 +88,10 @@ class_names = [
     "otter", "owl", "ox", "oyster", "panda",
     "parrot", "pelecaniformes", "penguin", "pig", "pigeon",
     "porcupine", "possum", "raccoon", "rat", "reindeer",
-    "rhinoceros", "sandpiper", "seahorese", "seal", "shark",
+    "rhinoceros", "sandpiper", "seahorse", "seal", "shark",
     "sheep", "snake", "sparrow", "squid", "squirrel",
     "starfish", "swan", "tiger", "turkey", "turtle",
-    "whaler", "wolf", "wombat", "woodpecker", "zebra"
+    "whale", "wolf", "wombat", "woodpecker", "zebra"
 ]
 
 # Load model
